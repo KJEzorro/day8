@@ -1,48 +1,4 @@
-
-
-
-<div id="map" style="width:100vw;height:50vh;"></div> <!-- 이렇게 스타일 먹이면 제일 쌔게 먹는다. -->
-<div id="result"></div>
-
-
-
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c580cafc2bcd97b4d03f790417f87dec"></script>
-<script>
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-        mapOption = {
-            center: new kakao.maps.LatLng(37.5497390729181, 126.91452727421024), // 지도의 중심좌표
-            level: 4 // 지도의 확대 레벨
-        };
-
-    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-    var map = new kakao.maps.Map(mapContainer, mapOption);
-</script>
-
-<script>
-
-    // 지도에 클릭 이벤트를 등록합니다
-    // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-    kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-
-        // 클릭한 위도, 경도 정보를 가져옵니다
-        var latlng = mouseEvent.latLng;
-
-        var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
-        message += '경도는 ' + latlng.getLng() + ' 입니다';
-
-        var resultDiv = document.getElementById('result');
-        resultDiv.innerHTML = message;
-
-    });
-
-
-
-
-
-
-
-
-
+'http://localhost:5555/day8/1team.json'
 
 
 
@@ -140,3 +96,51 @@ axios
 
 
 태그 데이터속성
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+과제1 o
+과제2 목록 클릭하면 지도에
+     클릭한 목록
+     마커만 나오게 하기
+과제3 json파일
+     thumb
+     속성추가 가게마다 -> 이미지경로
+과제4 인포윈도우 적용
+
+
+var iwContent = '<div style="padding:5px;">Hello World!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    iwPosition = new kakao.maps.LatLng(33.450701, 126.570667), //인포윈도우 표시 위치입니다
+    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+// 인포윈도우를 생성하고 지도에 표시합니다
+var infowindow = new kakao.maps.InfoWindow({
+    map: map, // 인포윈도우가 표시될 지도
+    position : iwPosition,
+    content : iwContent,
+    removable : iwRemoveable
+});
+
+
